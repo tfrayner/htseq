@@ -1263,7 +1263,7 @@ cdef class SAM_Alignment( AlignmentWithSequenceReversal ):
           iv = GenomicInterval( chrom, read.pos, read.aend, strand )
       else:
           iv = None
-      if read.qual != "*":
+      if read.qual is not None and read.qual != "*":
          seq = SequenceWithQualities( read.seq, read.qname, read.qual )
       else:
          seq = SequenceWithQualities( read.seq, read.qname, read.qual, "noquals" )
